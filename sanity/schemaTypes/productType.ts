@@ -1,5 +1,5 @@
-import { TrolleyIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import {TrolleyIcon} from "@sanity/icons";
+import {defineField, defineType} from "sanity";
 
 export const productType = defineType({
   name: "product",
@@ -27,12 +27,12 @@ export const productType = defineType({
       name: "images",
       title: "Product Images",
       type: "array",
-      of: [{ type: "image", options: { hotspot: true } }],
+      of: [{type: "image", options: {hotspot: true}}],
     }),
     defineField({
       name: "description",
       title: "Description",
-      type: "string",
+      type: "blockContent",
     }),
     defineField({
       name: "price",
@@ -50,7 +50,7 @@ export const productType = defineType({
       name: "categories",
       title: "Categories",
       type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
+      of: [{type: "reference", to: {type: "category"}}],
     }),
     defineField({
       name: "stock",
@@ -59,21 +59,14 @@ export const productType = defineType({
       validation: (Rule) => Rule.min(0),
     }),
     defineField({
-      name: "brand",
-      title: "Brand",
-      type: "reference",
-      to: { type: "brand" },
-    }),
-
-    defineField({
       name: "status",
       title: "Product Status",
       type: "string",
       options: {
         list: [
-          { title: "New", value: "new" },
-          { title: "Hot", value: "hot" },
-          { title: "Sale", value: "sale" },
+          {title: "New", value: "new"},
+          {title: "Hot", value: "hot"},
+          {title: "Sale", value: "sale"},
         ],
       },
     }),
@@ -83,10 +76,10 @@ export const productType = defineType({
       type: "string",
       options: {
         list: [
-          { title: "Gadget", value: "gadget" },
-          { title: "Appliances", value: "appliances" },
-          { title: "Refrigerators", value: "refrigerators" },
-          { title: "Others", value: "others" },
+          {title: "Gadget", value: "gadget"},
+          {title: "Appliances", value: "appliances"},
+          {title: "Refrigerators", value: "refrigerators"},
+          {title: "Others", value: "others"},
         ],
       },
     }),
@@ -105,7 +98,7 @@ export const productType = defineType({
       subtitle: "price",
     },
     prepare(selection) {
-      const { title, subtitle, media } = selection;
+      const {title, subtitle, media} = selection;
       const image = media && media[0];
       return {
         title: title,
