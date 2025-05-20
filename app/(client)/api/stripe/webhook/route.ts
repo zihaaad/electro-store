@@ -1,8 +1,8 @@
-import { Metadata } from "@/actions/createCheckoutSession";
+import {Metadata} from "@/actions/createCheckoutSession";
 import stripe from "@/lib/stripe";
-import { backendClient } from "@/sanity/lib/backendClient";
-import { headers } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import {backendClient} from "@/sanity/lib/backendClient";
+import {headers} from "next/headers";
+import {NextRequest, NextResponse} from "next/server";
 import Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
 
   if (!sig) {
     return NextResponse.json(
-      { error: "No Signature found for stripe" },
-      { status: 400 }
+      {error: "No Signature found for stripe"},
+      {status: 400}
     );
   }
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       {
         error: "Stripe webhook secret is not set",
       },
-      { status: 400 }
+      {status: 400}
     );
   }
   let event: Stripe.Event;
@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       {
         error: `Webhook Error: ${error}`,
       },
-      { status: 400 }
+      {status: 400}
     );
   }
 
@@ -53,32 +53,26 @@ export async function POST(req: NextRequest) {
         {
           error: `Error creating order: ${error}`,
         },
-        { status: 400 }
+        {status: 400}
       );
     }
   }
-  return NextResponse.json({ received: true });
+  return NextResponse.json({received: true});
 }
 
 async function createOrderInSanity(
   session: Stripe.Checkout.Session,
   invoice: Stripe.Invoice | null
 ) {
-  const {
-    id,
-    amount_total,
-    currency,
-    metadata,
-    payment_intent,
-    total_details,
-  } = session;
-  const { orderNumber, customerName, customerEmail, clerkUserId, address } =
-    metadata as unknown as Metadata & { address: string };
+  const {id, amount_total, currency, metadata, payment_intent, total_details} =
+    session;
+  const {orderNumber, customerName, customerEmail, clerkUserId, address} =
+    metadata as unknown as Metadata & {address: string};
   const parsedAddress = address ? JSON.parse(address) : null;
 
   const lineItemsWithProduct = await stripe.checkout.sessions.listLineItems(
     id,
-    { expand: ["data.price.product"] }
+    {expand: ["data.price.product"]}
   );
 
   // Create Sanity product references and prepare stock updates
@@ -98,7 +92,7 @@ async function createOrderInSanity(
       },
       quantity,
     });
-    stockUpdates.push({ productId, quantity });
+    stockUpdates.push({productId, quantity});
   }
   //   Create order in Sanity
 
@@ -146,9 +140,9 @@ async function createOrderInSanity(
 
 // Function to update stock levels
 async function updateStockLevels(
-  stockUpdates: { productId: string; quantity: number }[]
+  stockUpdates: {productId: string; quantity: number}[]
 ) {
-  for (const { productId, quantity } of stockUpdates) {
+  for (const {productId, quantity} of stockUpdates) {
     try {
       // Fetch current stock
       const product = await backendClient.getDocument(productId);
@@ -163,7 +157,7 @@ async function updateStockLevels(
       const newStock = Math.max(product.stock - quantity, 0); // Ensure stock does not go negative
 
       // Update stock in Sanity
-      await backendClient.patch(productId).set({ stock: newStock }).commit();
+      await backendClient.patch(productId).set({stock: newStock}).commit();
     } catch (error) {
       console.error(`Failed to update stock for product ${productId}:`, error);
     }
