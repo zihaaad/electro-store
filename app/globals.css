@@ -5,7 +5,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-poppins: "Poppins", sans-serif;
   --color-shop_light_pink: #fcf0e4;
   --color-shop_dark_green: #063c28;
   --color-shop_btn_dark_green: #063d29;
@@ -20,7 +19,6 @@
 }
 
 :root {
-  --font-poppins: "Poppins", sans-serif;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -145,10 +143,21 @@
   }
 }
 
-body {
-  font-family: var(--font-poppins);
-}
-
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* thin custom scrollbar */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  margin-top: 1rem;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4);
+  border-radius: 10px;
 }

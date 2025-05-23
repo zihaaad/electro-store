@@ -27,15 +27,6 @@ const OrdersPage = async () => {
 
   return (
     <Container className="py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight mb-2">My Orders</h1>
-        <p className="text-gray-500 max-w-3xl">
-          View and track all your past orders. Click on an order to see detailed
-          information including order items, shipping address, and payment
-          details.
-        </p>
-      </div>
-
       {orders?.length ? (
         <Card className="w-full overflow-hidden border-gray-200 shadow-sm">
           <CardHeader className="bg-gray-50 pb-4">
@@ -60,7 +51,7 @@ const OrdersPage = async () => {
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="p-0">
+          <CardContent className="px-4">
             <ScrollArea className="w-full">
               <div className="relative overflow-x-auto">
                 <Table>

@@ -1,8 +1,8 @@
-import { Category } from "@/sanity.types";
+import {Category} from "@/sanity.types";
 import React from "react";
 import Title from "../Title";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Label } from "../ui/label";
+import {RadioGroup, RadioGroupItem} from "../ui/radio-group";
+import {Label} from "../ui/label";
 
 interface Props {
   categories: Category[];
@@ -25,8 +25,7 @@ const CategoryList = ({
               setSelectedCategory(category?.slug?.current as string);
             }}
             key={category?._id}
-            className="flex items-center space-x-2 hover:cursor-pointer"
-          >
+            className="flex items-center space-x-2 hover:cursor-pointer">
             <RadioGroupItem
               value={category?.slug?.current as string}
               id={category?.slug?.current}
@@ -34,8 +33,7 @@ const CategoryList = ({
             />
             <Label
               htmlFor={category?.slug?.current}
-              className={`${selectedCategory === category?.slug?.current ? "font-semibold text-shop_dark_green" : "font-normal"}`}
-            >
+              className={`${selectedCategory === category?.slug?.current ? "font-semibold text-shop_dark_green" : "font-normal"}`}>
               {category?.title}
             </Label>
           </div>
@@ -44,8 +42,7 @@ const CategoryList = ({
       {selectedCategory && (
         <button
           onClick={() => setSelectedCategory(null)}
-          className="text-sm font-medium mt-2 underline underline-offset-2 decoration-[1px] hover:text-shop_dark_green hoverEffect text-left"
-        >
+          className="text-sm font-medium mt-3 underline underline-offset-2 decoration-[1px] hover:text-shop_dark_green hoverEffect text-left">
           Reset selection
         </button>
       )}

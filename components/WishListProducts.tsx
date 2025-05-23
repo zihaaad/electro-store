@@ -42,7 +42,7 @@ const WishListProducts = () => {
 
   return (
     <Container className="py-8">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6  ">
         <div className="flex items-center gap-2">
           <Heart className="h-5 w-5 text-shop_dark_green" />
           <Title>My Wishlist</Title>
@@ -68,8 +68,8 @@ const WishListProducts = () => {
               ?.map((product: Product) => (
                 <Card
                   key={product?._id}
-                  className="group overflow-hidden hover:shadow-md transition-all duration-300 border border-gray-200 flex flex-col">
-                  <CardContent className="p-0 relative flex-grow">
+                  className="group overflow-hidden hover:shadow-md transition-all duration-300 border border-gray-200 flex flex-col p-0 gap-0">
+                  <CardContent className="p-0 relative flex-grow ">
                     {/* Product image */}
                     <Link
                       href={`/product/${product?.slug?.current}`}
@@ -116,25 +116,25 @@ const WishListProducts = () => {
                       </Link>
 
                       <div className="mt-auto">
-                        <div className="mt-2">
+                        <div className="mt-2 flex gap-2">
                           <PriceFormatter
                             amount={product?.price}
-                            className="font-semibold text-gray-900"
+                            className="font-bold text-md text-gray-900"
                           />
                           {product?.discount && product.discount > 0 && (
-                            <span className="block text-xs text-gray-500 line-through">
+                            <sup className="block text-xs text-gray-000  line-through">
                               <PriceFormatter
                                 amount={
                                   (product?.price || 0) /
                                   (1 - product.discount / 100)
                                 }
                               />
-                            </span>
+                            </sup>
                           )}
                         </div>
 
                         {product?.variant && (
-                          <p className="text-xs text-gray-500 mt-1 capitalize">
+                          <p className="text-xs text-gray-700 mt-1 capitalize">
                             Variant: {product.variant}
                           </p>
                         )}
@@ -143,7 +143,7 @@ const WishListProducts = () => {
                   </CardContent>
 
                   {/* Action buttons - moved to bottom of card */}
-                  <div className="px-4 pb-4 mt-auto flex items-center justify-between gap-2">
+                  <div className="px-4 mt-auto flex items-center justify-between gap-2 pb-2">
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>

@@ -1,8 +1,8 @@
 "use client";
-import { Product } from "@/sanity.types";
-import { Button } from "./ui/button";
-import { cn } from "@/lib/utils";
-import { ShoppingBag } from "lucide-react";
+import {Product} from "@/sanity.types";
+import {Button} from "./ui/button";
+import {cn} from "@/lib/utils";
+import {ShoppingBag} from "lucide-react";
 import useStore from "@/store";
 import toast from "react-hot-toast";
 import PriceFormatter from "./PriceFormatter";
@@ -13,8 +13,8 @@ interface Props {
   className?: string;
 }
 
-const AddToCartButton = ({ product, className }: Props) => {
-  const { addItem, getItemCount } = useStore();
+const AddToCartButton = ({product, className}: Props) => {
+  const {addItem, getItemCount} = useStore();
   const itemCount = getItemCount(product?._id);
   const isOutOfStock = product?.stock === 0;
 
@@ -50,8 +50,7 @@ const AddToCartButton = ({ product, className }: Props) => {
           className={cn(
             "w-full bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect",
             className
-          )}
-        >
+          )}>
           <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
         </Button>
       )}

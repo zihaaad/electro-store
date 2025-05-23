@@ -2,7 +2,6 @@
 import {Category, Product} from "@/sanity.types";
 import React, {useEffect, useState} from "react";
 import Container from "./Container";
-import Title from "./Title";
 import CategoryList from "./shop/CategoryList";
 import {useSearchParams} from "next/navigation";
 import PriceList from "./shop/PriceList";
@@ -59,27 +58,10 @@ const Shop = ({categories}: Props) => {
     fetchProducts();
   }, [selectedCategory, selectedPrice]);
   return (
-    <div className="border-t">
-      <Container className="mt-5">
-        <div className="sticky top-0 z-10 mb-5">
-          <div className="flex items-center justify-between">
-            <Title className="text-lg uppercase tracking-wide">
-              Get the products as your needs
-            </Title>
-            {(selectedCategory !== null || selectedPrice !== null) && (
-              <button
-                onClick={() => {
-                  setSelectedCategory(null);
-                  setSelectedPrice(null);
-                }}
-                className="text-shop_dark_green underline text-sm mt-2 font-medium hover:text-darkRed hoverEffect">
-                Reset Filters
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row gap-5 border-t border-t-shop_dark_green/50">
-          <div className="md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-y-auto md:min-w-64 pb-5 md:border-r border-r-shop_btn_dark_green/50 scrollbar-hide">
+    <div className="border-t pt-3">
+      <Container className="">
+        <div className="flex flex-col md:flex-row gap-5 border-t-shop_dark_green/50">
+          <div className="md:sticky md:top-20 md:self-start h-[calc(100vh-160px)]  md:overflow-y-auto md:min-w-64 pb-5 scrollbar-thin">
             <CategoryList
               categories={categories}
               selectedCategory={selectedCategory}
@@ -90,8 +72,8 @@ const Shop = ({categories}: Props) => {
               selectedPrice={selectedPrice}
             />
           </div>
-          <div className="flex-1 pt-5">
-            <div className="h-[calc(100vh-160px)] overflow-y-auto pr-2 scrollbar-hide">
+          <div className="flex-1 pt-5 pb-5">
+            <div className="overflow-y-auto pr-2 scrollbar-hide">
               {loading ? (
                 <div className="p-20 flex flex-col gap-2 items-center justify-center bg-white">
                   <Loader2 className="w-10 h-10 text-shop_dark_green animate-spin" />

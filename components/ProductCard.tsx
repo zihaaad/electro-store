@@ -1,16 +1,16 @@
-import { Product } from "@/sanity.types";
-import { urlFor } from "@/sanity/lib/image";
+import {Product} from "@/sanity.types";
+import {urlFor} from "@/sanity/lib/image";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { StarIcon } from "@sanity/icons";
-import { Flame } from "lucide-react";
+import {StarIcon} from "@sanity/icons";
+import {Flame} from "lucide-react";
 import PriceView from "./PriceView";
 import Title from "./Title";
 import ProductSideMenu from "./ProductSideMenu";
 import AddToCartButton from "./AddToCartButton";
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({product}: {product: Product}) => {
   return (
     <div className="text-sm border-[1px] rounded-md border-darkBlue/20 group bg-white">
       <div className="relative group overflow-hidden bg-shop_light_bg">
@@ -22,7 +22,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               width={500}
               height={500}
               priority
-              className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg duration-500 
+              className={`w-full h-64 object-contain overflow-hidden transition-transform bg-gradient-to-r from-gray-60 to-gray-100 duration-500 
               ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
             />
           </Link>
@@ -35,8 +35,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         ) : (
           <Link
             href={"/deal"}
-            className="absolute top-2 left-2 z-10 border border-shop_orange/50 p-1 rounded-full group-hover:border-shop_orange hover:text-shop_dark_green hoverEffect"
-          >
+            className="absolute top-2 left-2 z-10 border border-shop_orange/50 p-1 rounded-full group-hover:border-shop_orange hover:text-shop_dark_green hoverEffect">
             <Flame
               size={18}
               fill="#fb6c08"
@@ -70,8 +69,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="flex items-center gap-2.5">
           <p className="font-medium">In Stock</p>
           <p
-            className={`${product?.stock === 0 ? "text-red-600" : "text-shop_dark_green/80 font-semibold"}`}
-          >
+            className={`${product?.stock === 0 ? "text-red-600" : "text-shop_dark_green/80 font-semibold"}`}>
             {(product?.stock as number) > 0 ? product?.stock : "unavailable"}
           </p>
         </div>
