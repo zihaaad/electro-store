@@ -1,4 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Electro - Electronics E-commerce Website
+
+## Email Configuration for Contact Form
+
+To enable the contact form functionality, you need to set up your email credentials in an `.env.local` file at the root of the project:
+
+```
+# Email Configuration
+EMAIL_USER=your-email@gmail.com
+EMAIL_APP_PASSWORD=your-app-password
+EMAIL_RECIPIENT=recipient-email@example.com
+```
+
+### Setting up Gmail App Password:
+
+1. Enable 2-Step Verification in your Google Account
+2. Go to Security > App passwords
+3. Generate a new app password for "Mail" and your app name
+4. Use that password in the EMAIL_APP_PASSWORD field
+
+## Legal Pages for Stripe Verification
+
+This project includes the following legal pages required for Stripe verification:
+
+- Privacy Policy: `/privacy-policy`
+- Disclaimer: `/disclaimer`
+- Delivery & Returns: `/delivery-returns`
+- Terms & Conditions: `/terms`
+- About Us: `/about`
+- Contact: `/contact`
+
+All of these pages are accessible from the footer's "Quick Links" section for easy navigation.
 
 ## Getting Started
 

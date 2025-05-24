@@ -1,5 +1,5 @@
-import { BasketIcon } from "@sanity/icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import {BasketIcon} from "@sanity/icons";
+import {defineArrayMember, defineField, defineType} from "sanity";
 
 export const orderType = defineType({
   name: "order",
@@ -17,9 +17,9 @@ export const orderType = defineType({
       name: "invoice",
       type: "object",
       fields: [
-        { name: "id", type: "string" },
-        { name: "number", type: "string" },
-        { name: "hosted_invoice_url", type: "url" },
+        {name: "id", type: "string"},
+        {name: "number", type: "string"},
+        {name: "hosted_invoice_url", type: "url"},
       ],
     },
     defineField({
@@ -69,7 +69,7 @@ export const orderType = defineType({
               name: "product",
               title: "Product Bought",
               type: "reference",
-              to: [{ type: "product" }],
+              to: [{type: "product"}],
             }),
             defineField({
               name: "quantity",
@@ -119,11 +119,11 @@ export const orderType = defineType({
       title: "Shipping Address",
       type: "object",
       fields: [
-        defineField({ name: "state", title: "State", type: "string" }),
-        defineField({ name: "zip", title: "Zip Code", type: "string" }),
-        defineField({ name: "city", title: "City", type: "string" }),
-        defineField({ name: "address", title: "Address", type: "string" }),
-        defineField({ name: "name", title: "Name", type: "string" }),
+        defineField({name: "state", title: "State", type: "string"}),
+        defineField({name: "zip", title: "Zip Code", type: "string"}),
+        defineField({name: "city", title: "City", type: "string"}),
+        defineField({name: "address", title: "Address", type: "string"}),
+        defineField({name: "name", title: "Name", type: "string"}),
       ],
     }),
     defineField({
@@ -132,13 +132,13 @@ export const orderType = defineType({
       type: "string",
       options: {
         list: [
-          { title: "Pending", value: "pending" },
-          { title: "Processing", value: "processing" },
-          { title: "Paid", value: "paid" },
-          { title: "Shipped", value: "shipped" },
-          { title: "Out for Delivery", value: "out_for_delivery" },
-          { title: "Delivered", value: "delivered" },
-          { title: "Cancelled", value: "cancelled" },
+          {title: "Pending", value: "pending"},
+          {title: "Processing", value: "processing"},
+          {title: "Paid", value: "paid"},
+          {title: "Shipped", value: "shipped"},
+          {title: "Out for Delivery", value: "out_for_delivery"},
+          {title: "Delivered", value: "delivered"},
+          {title: "Cancelled", value: "cancelled"},
         ],
       },
     }),

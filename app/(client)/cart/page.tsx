@@ -90,9 +90,8 @@ const CartPage = () => {
               </div>
 
               <div className="grid lg:grid-cols-3 gap-5 md:gap-8">
-                {/* Products List */}
                 <div className="lg:col-span-2">
-                  <Card className="overflow-hidden">
+                  <Card className="overflow-hidden p-0">
                     <CardHeader className="bg-gray-50 border-b p-4">
                       <div className="flex justify-between">
                         <CardTitle className="text-lg">

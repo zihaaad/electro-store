@@ -18,8 +18,9 @@ const Footer = () => {
           <div className="space-y-4">
             <Logo />
             <SubText>
-              Discover curated furniture collections at Electro, blending style
-              and comfort to elevate your living spaces.
+              Discover premium electronics and gadgets at Electro. We offer
+              high-quality products with exceptional service to enhance your
+              tech experience.
             </SubText>
             <SocialMedia
               className="text-darkColor/60"
@@ -59,7 +60,7 @@ const Footer = () => {
             <SubTitle>Newsletter</SubTitle>
             <SubText>
               Subscribe to our newsletter to receive updates and exclusive
-              offers
+              offers on our latest electronics and gadgets
             </SubText>
             <form className="space-y-3">
               <Input placeholder="Enter your email" type="email" required />
@@ -69,8 +70,8 @@ const Footer = () => {
         </div>
         <div className="py-6 border-t text-center text-sm text-gray-600">
           <div>
-            © {new Date().getFullYear()} <Logo className="text-sm" />. All
-            rights reserved.
+            © {new Date().getFullYear()} <Logo className="text-sm" /> | All
+            rights reserved. Payments processed securely by Stripe.
           </div>
         </div>
       </Container>
