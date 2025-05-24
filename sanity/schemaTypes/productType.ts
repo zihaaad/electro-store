@@ -30,9 +30,18 @@ export const productType = defineType({
       of: [{type: "image", options: {hotspot: true}}],
     }),
     defineField({
+      name: "shortDescription",
+      title: "Short Description",
+      type: "text",
+      description: "Brief description displayed under product name",
+      validation: (Rule) => Rule.max(200),
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "blockContent",
+      description:
+        "Detailed product description shown in the product details tab",
     }),
     defineField({
       name: "price",

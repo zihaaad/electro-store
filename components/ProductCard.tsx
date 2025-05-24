@@ -3,14 +3,18 @@ import {urlFor} from "@/sanity/lib/image";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import {StarIcon} from "@sanity/icons";
 import {Flame} from "lucide-react";
 import PriceView from "./PriceView";
 import Title from "./Title";
 import ProductSideMenu from "./ProductSideMenu";
 import AddToCartButton from "./AddToCartButton";
+import ProductRating from "./ProductRating";
 
 const ProductCard = ({product}: {product: Product}) => {
+  // Use the avgRating and reviewCount if they exist from the product query
+  const avgRating = product.avgRating || 0;
+  const reviewCount = product.reviewCount || 0;
+
   return (
     <div className="text-sm border-[1px] rounded-md border-darkBlue/20 group bg-white">
       <div className="relative group overflow-hidden bg-shop_light_bg">
@@ -51,20 +55,8 @@ const ProductCard = ({product}: {product: Product}) => {
           </p>
         )}
         <Title className="text-sm line-clamp-1">{product?.name}</Title>
-        <div className="flex items-center gap-2">
-          <div className="flex items-center">
-            {[...Array(5)].map((_, index) => (
-              <StarIcon
-                key={index}
-                className={
-                  index < 4 ? "text-shop_light_green" : " text-lightText"
-                }
-                fill={index < 4 ? "#93D991" : "#ababab"}
-              />
-            ))}
-          </div>
-          <p className="text-lightText text-xs tracking-wide">5 Reviews</p>
-        </div>
+
+        <ProductRating rating={avgRating} count={reviewCount} />
 
         <div className="flex items-center gap-2.5">
           <p className="font-medium">In Stock</p>

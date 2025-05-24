@@ -1,8 +1,10 @@
 import {sanityFetch} from "../lib/live";
 import {
+  CAN_USER_REVIEW_QUERY,
   DEAL_PRODUCTS,
   MY_ORDERS_QUERY,
   PRODUCT_BY_SLUG_QUERY,
+  PRODUCT_REVIEWS_QUERY,
   SEARCH_PRODUCTS_QUERY,
 } from "./query";
 
@@ -79,10 +81,38 @@ const searchProducts = async (searchTerm: string) => {
   }
 };
 
+const getProductReviews = async (productId: string) => {
+  try {
+    const {data} = await sanityFetch({
+      query: PRODUCT_REVIEWS_QUERY,
+      params: {productId},
+    });
+    return data ?? [];
+  } catch (error) {
+    console.error("Error fetching product reviews:", error);
+    return [];
+  }
+};
+
+const canUserReviewProduct = async (userId: string, productId: string) => {
+  try {
+    const {data} = await sanityFetch({
+      query: CAN_USER_REVIEW_QUERY,
+      params: {userId, productId},
+    });
+    return data?.hasDeliveredOrder && !data?.hasReviewed;
+  } catch (error) {
+    console.error("Error checking if user can review:", error);
+    return false;
+  }
+};
+
 export {
   getCategories,
   getDealProducts,
   getProductBySlug,
   getMyOrders,
   searchProducts,
+  getProductReviews,
+  canUserReviewProduct,
 };

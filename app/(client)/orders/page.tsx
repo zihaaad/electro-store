@@ -28,11 +28,11 @@ const OrdersPage = async () => {
   return (
     <Container className="py-12">
       {orders?.length ? (
-        <Card className="w-full overflow-hidden border-gray-200 shadow-sm">
-          <CardHeader className="bg-gray-50 pb-4">
+        <Card className="w-full overflow-hidden border-gray-200 shadow-sm p-0">
+          <CardHeader className="bg-gray-50 border py-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <CardTitle className="flex items-center gap-2 text-xl">
+                <CardTitle className="flex items-center gap-2 text-xl ">
                   <PackageOpen className="h-5 w-5 text-shop_dark_green" />
                   Order History
                 </CardTitle>
@@ -51,7 +51,7 @@ const OrdersPage = async () => {
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="px-4">
+          <CardContent className="px-4 pb-2">
             <ScrollArea className="w-full">
               <div className="relative overflow-x-auto">
                 <Table>

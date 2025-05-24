@@ -1,9 +1,9 @@
 export const headerData = [
   {title: "Home", href: "/"},
   {title: "Shop", href: "/shop"},
-  {title: "Hot Deal", href: "/deal"},
+  {title: "Hot Deals", href: "/deal"},
   {title: "Contact", href: "/contact"},
-  {title: "About Us", href: "/about"},
+  {title: "About", href: "/about"},
 ];
 export const quickLinksData = [
   {title: "Contact Us", href: "/contact"},
