@@ -1,10 +1,13 @@
 import React from "react";
 import {Title} from "@/components/ui/text";
+import {Metadata} from "next";
+import {getPageMetadata} from "@/lib/metadata";
 
-export const metadata = {
-  title: "Return Policy | Electro",
-  description: "Return policy for Electro - Your trusted electronics store",
-};
+export const metadata: Metadata = getPageMetadata(
+  "Return Policy",
+  "return-policy",
+  "Return policy for Electro - Your trusted electronics store"
+);
 
 export default function ReturnPolicy() {
   return (

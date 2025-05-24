@@ -1,10 +1,13 @@
 import React from "react";
 import {Title} from "@/components/ui/text";
+import {Metadata} from "next";
+import {getPageMetadata} from "@/lib/metadata";
 
-export const metadata = {
-  title: "About Us | Electro",
-  description: "Learn more about Electro - Your trusted electronics store",
-};
+export const metadata: Metadata = getPageMetadata(
+  "About Us",
+  "about",
+  "Learn more about Electro - Your trusted electronics store"
+);
 
 export default function About() {
   return (

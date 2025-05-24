@@ -1,10 +1,13 @@
 import React from "react";
 import {Title} from "@/components/ui/text";
+import {Metadata} from "next";
+import {getPageMetadata} from "@/lib/metadata";
 
-export const metadata = {
-  title: "Privacy Policy",
-  description: "Privacy policy for Electro - Your trusted electronics store",
-};
+export const metadata: Metadata = getPageMetadata(
+  "Privacy Policy",
+  "privacy-policy",
+  "Privacy policy for Electro - Your trusted electronics store"
+);
 
 export default function PrivacyPolicy() {
   return (

@@ -16,6 +16,14 @@ import {FileX, PackageOpen} from "lucide-react";
 import Link from "next/link";
 import {redirect} from "next/navigation";
 import React from "react";
+import {Metadata} from "next";
+import {getPageMetadata} from "@/lib/metadata";
+
+export const metadata: Metadata = getPageMetadata(
+  "Order History",
+  "orders",
+  "View your order history and track your purchases at Electro"
+);
 
 const OrdersPage = async () => {
   const {userId} = await auth();

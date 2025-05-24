@@ -1,10 +1,13 @@
 import React from "react";
 import {Title} from "@/components/ui/text";
+import {Metadata} from "next";
+import {getPageMetadata} from "@/lib/metadata";
 
-export const metadata = {
-  title: "Shipping Policy | Electro",
-  description: "Shipping policy for Electro - Your trusted electronics store",
-};
+export const metadata: Metadata = getPageMetadata(
+  "Shipping Policy",
+  "shipping-policy",
+  "Shipping policy for Electro - Your trusted electronics store"
+);
 
 export default function ShippingPolicy() {
   return (

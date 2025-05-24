@@ -1,11 +1,13 @@
 import React from "react";
 import {Title} from "@/components/ui/text";
+import {Metadata} from "next";
+import {getPageMetadata} from "@/lib/metadata";
 
-export const metadata = {
-  title: "Terms & Conditions | Electro",
-  description:
-    "Terms and conditions for Electro - Your trusted electronics store",
-};
+export const metadata: Metadata = getPageMetadata(
+  "Terms & Conditions",
+  "terms-and-conditions",
+  "Terms and conditions for Electro - Your trusted electronics store"
+);
 
 export default function Terms() {
   return (

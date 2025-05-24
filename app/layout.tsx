@@ -1,6 +1,10 @@
+import type {Metadata} from "next";
 import "./globals.css";
 import {Toaster} from "react-hot-toast";
 import {Lexend} from "next/font/google";
+import Script from "next/script";
+import {generateOrganizationJsonLd} from "@/lib/structured-data";
+import {getDefaultMetadata} from "@/lib/metadata";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -8,9 +12,23 @@ const lexend = Lexend({
   variable: "--font-lexend",
 });
 
+// Generate metadata for the site
+export const metadata: Metadata = getDefaultMetadata();
+
 const RootLayout = ({children}: {children: React.ReactNode}) => {
+  // Generate organization structured data
+  const organizationJsonLd = generateOrganizationJsonLd();
+
   return (
     <html lang="en">
+      <head>
+        {/* Add organization structured data */}
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify(organizationJsonLd)}}
+        />
+      </head>
       <body className={`${lexend.variable}  antialiased`}>
         {children}
         <Toaster
