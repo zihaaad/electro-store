@@ -52,7 +52,7 @@ const CategoryProducts = ({categories, slug}: Props) => {
   };
   useEffect(() => {
     fetchProducts(currentSlug);
-  }, [router]);
+  }, [router, currentSlug]);
 
   return (
     <div className="w-full">
