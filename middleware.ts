@@ -5,7 +5,9 @@ export default clerkMiddleware();
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|api/webhooks/clerk|favicon.ico).*)",
+    // Exclude static files, Clerk webhooks, and Stripe webhooks
+    "/((?!_next/static|_next/image|api/webhooks/clerk|api/stripe/webhook|favicon.ico).*)",
+    // Apply Clerk to all other API routes
     "/api/(.*)",
   ],
 };
