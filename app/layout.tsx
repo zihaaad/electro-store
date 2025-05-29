@@ -5,6 +5,7 @@ import {Lexend} from "next/font/google";
 import Script from "next/script";
 import {generateOrganizationJsonLd} from "@/lib/structured-data";
 import {getDefaultMetadata} from "@/lib/metadata";
+import {ClerkProviderWrapper} from "@/components/ClerkProviderWrapper";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -30,16 +31,18 @@ const RootLayout = ({children}: {children: React.ReactNode}) => {
         />
       </head>
       <body className={`${lexend.variable}  antialiased`}>
-        {children}
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            style: {
-              background: "#000000",
-              color: "#fff",
-            },
-          }}
-        />
+        <ClerkProviderWrapper>
+          {children}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              style: {
+                background: "#000000",
+                color: "#fff",
+              },
+            }}
+          />
+        </ClerkProviderWrapper>
       </body>
     </html>
   );
