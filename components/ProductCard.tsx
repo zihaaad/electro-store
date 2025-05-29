@@ -11,7 +11,6 @@ import AddToCartButton from "./AddToCartButton";
 import ProductRating from "./ProductRating";
 
 const ProductCard = ({product}: {product: Product}) => {
-  // Use the avgRating and reviewCount if they exist from the product query
   const avgRating = product.avgRating || 0;
   const reviewCount = product.reviewCount || 0;
 
@@ -71,7 +70,10 @@ const ProductCard = ({product}: {product: Product}) => {
           discount={product?.discount}
           className="text-sm"
         />
-        <AddToCartButton product={product} className="w-36 rounded-full" />
+        <AddToCartButton
+          product={product}
+          className="w-32 md:w-36 rounded-full"
+        />
       </div>
     </div>
   );

@@ -161,3 +161,9 @@
   background-color: rgba(100, 100, 100, 0.4);
   border-radius: 10px;
 }
+
+.custom-grid-1-col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.625rem;
+}
