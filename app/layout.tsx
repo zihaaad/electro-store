@@ -21,17 +21,19 @@ const RootLayout = ({children}: {children: React.ReactNode}) => {
   const organizationJsonLd = generateOrganizationJsonLd();
 
   return (
-    <html lang="en">
-      <head>
-        {/* Add organization structured data */}
-        <Script
-          id="organization-jsonld"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: JSON.stringify(organizationJsonLd)}}
-        />
-      </head>
-      <body className={`${lexend.variable}  antialiased`}>
-        <ClerkProviderWrapper>
+    <ClerkProviderWrapper>
+      <html lang="en">
+        <head>
+          {/* Add organization structured data */}
+          <Script
+            id="organization-jsonld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(organizationJsonLd),
+            }}
+          />
+        </head>
+        <body className={`${lexend.variable}  antialiased`}>
           {children}
           <Toaster
             position="bottom-right"
@@ -42,9 +44,9 @@ const RootLayout = ({children}: {children: React.ReactNode}) => {
               },
             }}
           />
-        </ClerkProviderWrapper>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProviderWrapper>
   );
 };
 export default RootLayout;
