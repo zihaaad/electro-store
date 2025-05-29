@@ -4,7 +4,7 @@ import {apiVersion, dataset, projectId} from "../env";
 
 // Validate API token availability
 if (!process.env.SANITY_API_TOKEN) {
-  console.warn(
+  console.log(
     "Warning: SANITY_API_TOKEN is not set in the environment variables."
   );
 }

@@ -8,25 +8,25 @@ import {TypedObject} from "sanity";
 // Custom Portable Text components
 const portableTextComponents: Partial<PortableTextReactComponents> = {
   block: {
-    h1: ({children}) => <h1 className="text-xl font-bold my-3">{children}</h1>,
+    h1: ({children}) => <h1 className="text-4xl font-bold my-3">{children}</h1>,
     h2: ({children}) => (
-      <h2 className="text-lg font-semibold my-2">{children}</h2>
+      <h2 className="text-2xl font-semibold my-2">{children}</h2>
     ),
     h3: ({children}) => (
-      <h3 className="text-base font-medium my-2">{children}</h3>
+      <h3 className="text-xl font-medium my-2">{children}</h3>
     ),
     normal: ({children}) => (
-      <p className="text-sm text-gray-600 my-1.5">{children}</p>
+      <p className="text text-gray-600 my-1.5">{children}</p>
     ),
   },
   list: {
     bullet: ({children}) => (
-      <ul className="list-disc ml-5 my-2 space-y-1 text-sm text-gray-600">
+      <ul className="list-disc ml-5 my-2 space-y-1 text-gray-600">
         {children}
       </ul>
     ),
     number: ({children}) => (
-      <ol className="list-decimal ml-5 my-2 space-y-1 text-sm text-gray-600">
+      <ol className="list-decimal ml-5 my-2 space-y-1 text-gray-600">
         {children}
       </ol>
     ),

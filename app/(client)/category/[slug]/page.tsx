@@ -10,9 +10,9 @@ import {Category} from "@/sanity.types";
 export async function generateMetadata({
   params,
 }: {
-  params: {slug: string};
+  params: {slug: Promise<string>};
 }): Promise<Metadata> {
-  const slug = params.slug;
+  const slug = await params.slug;
   const categories = await getCategories();
   const category = categories.find(
     (cat: Category & {productCount?: number}) => cat.slug?.current === slug

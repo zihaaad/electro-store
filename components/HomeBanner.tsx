@@ -14,7 +14,7 @@ const slides = [
   {
     title: "Premium Headphones",
     subtitle: "Up to 40% off on select models",
-    link: "/shop/headphones",
+    link: "/shop",
     color: "border-gray-600",
     shapes: [
       {type: "circle", size: "w-24 h-24", position: "top-4 right-8", delay: 0},
@@ -35,7 +35,7 @@ const slides = [
   {
     title: "Smart Speakers",
     subtitle: "Exclusive bundle deals",
-    link: "/shop/speakers",
+    link: "/shop",
     color: "border-slate-800",
     shapes: [
       {type: "rect", size: "w-32 h-16", position: "top-8 right-16", delay: 0.1},
@@ -56,7 +56,7 @@ const slides = [
   {
     title: "Wearable Tech",
     subtitle: "New fitness trackers",
-    link: "/shop/wearables",
+    link: "/shop",
     color: "border-zinc-800",
     shapes: [
       {

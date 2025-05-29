@@ -8,12 +8,13 @@ import ProductDetails from "@/components/ProductDetails";
 import ProductRating from "@/components/ProductRating";
 import {auth} from "@clerk/nextjs/server";
 import {canUserReviewProduct, getProductBySlug} from "@/sanity/queries";
-import {CornerDownLeft, Truck} from "lucide-react";
+import {CornerDownLeft, ShieldCheck, Truck} from "lucide-react";
 import {Metadata} from "next";
 import {notFound} from "next/navigation";
 import React from "react";
 import ShareButton from "@/components/ShareButton";
 import {getProductMetadata} from "@/lib/metadata";
+import Link from "next/link";
 
 const calculateAverageRating = (ratings: number[] = []) => {
   if (!ratings || ratings.length === 0) return 0;
@@ -24,9 +25,10 @@ const calculateAverageRating = (ratings: number[] = []) => {
 export async function generateMetadata({
   params,
 }: {
-  params: {slug: string};
+  params: Promise<{slug: string}>;
 }): Promise<Metadata> {
-  const product = await getProductBySlug(params.slug);
+  const slug = (await params).slug;
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     return {
@@ -35,7 +37,7 @@ export async function generateMetadata({
     };
   }
 
-  return getProductMetadata(product, params.slug);
+  return getProductMetadata(product, slug);
 }
 
 const SingleProductPage = async ({
@@ -43,7 +45,7 @@ const SingleProductPage = async ({
 }: {
   params: Promise<{slug: string}>;
 }) => {
-  const {slug} = await params;
+  const slug = (await params).slug;
   const product = await getProductBySlug(slug);
 
   if (!product) {
@@ -95,7 +97,7 @@ const SingleProductPage = async ({
 
               {/* Short Description */}
               {product?.shortDescription && (
-                <div className="text-sm text-gray-600">
+                <div className="text text-gray-600">
                   {product.shortDescription}
                 </div>
               )}
@@ -123,43 +125,31 @@ const SingleProductPage = async ({
               <AddToCartButton product={product} />
               <FavoriteButton showProduct={true} product={product} />
             </div>
-            <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
+            <div className="flex flex-wrap items-center justify-between border-b border-b-gray-200 py-5 -mt-2">
               <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
                 <Truck className="text-lg" />
-                <p>Shipping & Delivery</p>
+                <Link href={"/shipping-policy"}>Shipping Policy</Link>
               </div>
               <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
                 <CornerDownLeft className="text-lg" />
-                <p>Return Policy</p>
+                <Link href={"/return-policy"}>Return Policy</Link>
               </div>
+
               <ShareButton
                 title={product.name || ""}
                 text={product.shortDescription || product.name || ""}
               />
             </div>
             <div className="flex flex-col">
-              <div className="border border-lightColor/25 border-b-0 p-3 flex items-center gap-2.5">
-                <Truck size={30} className="text-shop_orange" />
-                <div>
-                  <p className="text-base font-semibold text-black">
-                    Free Delivery
-                  </p>
-                  <p className="text-sm text-gray-500 underline underline-offset-2">
-                    Enter your Postal code for Delivery Availability.
-                  </p>
-                </div>
-              </div>
               <div className="border border-lightColor/25 p-3 flex items-center gap-2.5">
-                <CornerDownLeft size={30} className="text-shop_orange" />
+                <ShieldCheck size={30} className="text-shop_orange" />
                 <div>
                   <p className="text-base font-semibold text-black">
-                    Return Delivery
+                    Our Guarantee
                   </p>
-                  <p className="text-sm text-gray-500 ">
-                    Free 30days Delivery Returns.{" "}
-                    <span className="underline underline-offset-2">
-                      Details
-                    </span>
+                  <p className="text-sm text-gray-500">
+                    Quality products backed by 24/7 support and secure stripe
+                    checkout.{" "}
                   </p>
                 </div>
               </div>

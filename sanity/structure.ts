@@ -21,4 +21,8 @@ export const structure: StructureResolver = (S) =>
         .title("Addresses")
         .schemaType("address")
         .child(S.documentTypeList("address")),
+      S.listItem()
+        .title("Reviews")
+        .schemaType("review")
+        .child(S.documentTypeList("review")),
     ]);
